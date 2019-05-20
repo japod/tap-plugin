@@ -93,10 +93,7 @@ public class TapCompatibilityColumn extends ListViewColumn {
     }
 
     private Job<?, ?> getCounterpartJob(Job<?, ?> job) throws AccessDeniedException {
-        Jenkins jenkins = Jenkins.getActiveInstance();
-        String theOtherJobName = job.getName().replaceFirst(toReplace, newText);
-        Job<?,?> theOtherJob = (Job)jenkins.getItem(theOtherJobName);
-        return theOtherJob;
+        return ViewHelper.getCounterpartJob(job, toReplace, newText);
     }
 
     private TapTestResultAction getLastTapResult(Job<?, ?> job) {
@@ -126,5 +123,4 @@ public class TapCompatibilityColumn extends ListViewColumn {
             return "/plugin/tap/help/TapCompatibilityColumn/config.html";
         }
     }
-
 }

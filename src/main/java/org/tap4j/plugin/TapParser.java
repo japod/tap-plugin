@@ -163,7 +163,7 @@ public class TapParser {
                 try {
                     log("Parsing TAP test result [" + tapFile + "].");
 
-                    final Tap13Parser parser = new Tap13Parser("UTF-8", enableSubtests, planRequired);
+                    final Tap13Parser parser = new Tap13Parser("UTF-8", enableSubtests, planRequired, true);
                     final TestSet testSet = flattenTheSetAsRequired(stripSingleParentsAsRequired(parser.parseFile(tapFile)));
 
                     if (containsNotOk(testSet) || testSet.containsBailOut()) {
